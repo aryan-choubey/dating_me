@@ -1,0 +1,1017 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+  font-family: inherit;
+}
+
+
+/* =========================================================
+   MAIN LANDING
+========================================================= */
+
+.landing {
+  width: 100%;
+  min-height: 100vh;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 0% 0%,
+      rgba(244, 63, 142, 0.10),
+      transparent 85%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(249, 115, 22, 0.10),
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 100% 100%,
+      rgba(236, 72, 153, 0.08),
+      transparent 65%
+    ),
+    radial-gradient(
+      circle at 0% 100%,
+      rgba(249, 115, 22, 0.06),
+      transparent 85%
+    );
+}
+
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+
+.hero_section {
+  width: 100%;
+
+  min-height: 470px;
+
+  padding: 0 38px 38px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+  width: 100%;
+
+  height: 72px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+
+/* Logo */
+
+.logo {
+  display: flex;
+
+  align-items: center;
+}
+
+.logo img {
+  width: 230px;
+
+  height: auto;
+
+  object-fit: contain;
+}
+
+
+/* Header buttons */
+
+.button {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+}
+
+
+/* Login */
+
+.login-button {
+  background: white !important;
+
+  color: #222 !important;
+
+  border: 1px solid #aaa !important;
+
+  box-shadow:
+    0 4px 8px
+    rgba(0, 0, 0, 0.3);
+}
+
+
+/* =========================================================
+   HERO HOME
+========================================================= */
+/* =========================================================
+   HOME
+========================================================= */
+
+.home {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  height: 470px;
+  /* background-color: #f43f8e; */
+}
+
+
+/* =========================================================
+   HERO HEADING
+========================================================= */
+
+.home > h1 {
+  width: 80%;
+
+  margin: 50px 0 15px 0;
+
+  font-size: 40px;
+  line-height: 1.05;
+  font-weight: 800;
+
+  color: #111;
+
+  text-align: left;
+
+  /* Keep complete heading in one line */
+  /* white-space: nowrap; */
+}
+
+
+/* Gradient heading */
+
+.home > h1 span {
+  background: linear-gradient(
+    90deg,
+    #f43f8e,
+    #ff6035,
+    #a855f7
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   MAIN HERO CONTAINER
+========================================================= */
+
+.main_container {
+  width: 100%;
+  height: 300px;
+
+  display: grid;
+
+  grid-template-columns: 42% 58%;
+
+  gap: 10px;
+
+  margin-top: 0;
+
+  /* background-color: #a855f7; */
+}
+
+
+/* =========================================================
+   HERO TEXT
+========================================================= */
+
+.para {
+    margin-top: 20px;
+  /* padding-right: 20px; */
+  padding-top: 0;
+}
+
+
+.para p {
+  max-width: 930px;
+
+  margin: 0 0 16px;
+
+  color: #111;
+
+  font-size: 18px;
+  line-height: 1.25;
+  font-weight: 500;
+
+  text-align: left;
+}
+
+
+/* =========================================================
+   HERO IMAGE
+========================================================= */
+
+.bag_img {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  /* background-color: #f97316; */
+
+ 
+}
+
+
+/* Main Hero Image */
+
+.hero_main_image {
+    position: absolute;
+  width: 100%;
+  max-width: 490px;
+
+  height: 600px;
+
+  margin-top: 160px;
+
+  display: block;
+  /* background-color: #a855f7; */
+   /* margin-bottom: 70px; */
+
+   /* object-fit: contain; */
+}
+
+
+
+/* =========================================================
+   HEART IMAGE
+========================================================= */
+
+.heart_img {
+  position: absolute;
+
+  left: 8%;
+  top: 30px;
+
+  z-index: 10;
+
+  width: 65px;
+  height: 65px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  animation: heartBounce 2.5s ease-in-out infinite;
+}
+
+
+.heart_img img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 5px 7px rgba(0, 0, 0, 0.18)
+  );
+}
+
+
+/* =========================================================
+   HEART BOUNCE
+========================================================= */
+
+@keyframes heartBounce {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================================================
+   JOIN BUTTON
+========================================================= */
+
+.join-button {
+  margin-top: -5px;
+
+  padding: 13px 29px !important;
+
+  background: linear-gradient(
+    90deg,
+    #f43f8e,
+    #f97316
+  ) !important;
+
+  color: white !important;
+
+  border: none !important;
+
+  border-radius: 6px !important;
+
+  box-shadow:
+    0 7px 13px rgba(0, 0, 0, 0.25);
+
+  font-size: 21px !important;
+
+  display: flex;
+  
+}
+
+/* =========================================================
+   WHITE DIVIDER
+========================================================= */
+
+.white_divider {
+  width: 100%;
+
+  height: 44px;
+
+  background: white;
+}
+
+
+/* =========================================================
+   SECOND SECTION
+========================================================= */
+
+.content_section {
+  width: 100%;
+
+  padding:
+    65px
+    30px
+    0;
+
+    /* margin-bottom: 80px; */
+}
+
+
+/* =========================================================
+   WHY HEADING
+========================================================= */
+
+.why_heading {
+  text-align: center;
+
+  margin-bottom: 55px;
+}
+
+
+.why_heading h1 {
+  margin-bottom: 10px;
+
+  font-size: 40px;
+  font-weight: 650;
+  line-height: 1.1;
+
+  color: #111;
+}
+
+
+.why_heading h1 span {
+  background:
+    linear-gradient(
+      90deg,
+      #f43f8e,
+      #ff6035
+    );
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+.why_heading h2 {
+  font-size: 15px;
+
+  font-weight: 600;
+
+  color: #111;
+}
+
+
+/* =========================================================
+   FEATURE CARDS
+========================================================= */
+
+.feature_cards {
+  width: 100%;
+
+  max-width: 600px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, 1fr);
+
+  column-gap: 65px;
+
+  row-gap: 55px;
+}
+
+
+/* =========================================================
+   FEATURE CARD
+========================================================= */
+
+.feature_card {
+  width: 100%;
+
+  min-height: 215px;
+
+  padding: 20px 22px;
+
+  background: white;
+
+  border-radius: 24px;
+
+  box-shadow:
+    0 12px 15px
+    rgba(0, 0, 0, 0.30);
+
+  transition:
+    transform 0.3s ease;
+
+   
+}
+
+
+.feature_card:hover {
+  transform:
+    translateY(-7px);
+}
+
+
+/* =========================================================
+   CARD ICON
+========================================================= */
+
+.feature_icon {
+  width: 43px;
+
+  height: 43px;
+
+  margin-bottom: 15px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 7px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #f43f8e,
+      #f97316
+    );
+
+  box-shadow:
+    0 4px 9px
+    rgba(244, 63, 142, 0.35);
+}
+
+
+.feature_icon img {
+  width: 30px;
+
+  height: 30px;
+
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   CARD TEXT
+========================================================= */
+
+.feature_card h2 {
+  margin-bottom: 7px;
+
+  font-size: 19px;
+
+  line-height: 1.1;
+
+  color: #111;
+
+  text-align: start;
+
+  
+}
+
+
+.feature_card p {
+  color: #777;
+
+  font-size: 13px;
+
+  line-height: 1.25;
+
+  font-weight: 500;
+  
+
+  text-align: start;
+
+}
+
+
+
+
+/* =========================================================
+   BOTTOM GIRL IMAGE
+========================================================= */
+.bottom_image_container {
+  position: relative;
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-top: 60px; */
+  /* margin-bottom: 120px; */
+}
+
+.bottom_main_image {
+  width: 500px;
+  height: 400px;
+}
+
+.bottom_main_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Small images */
+.small_image {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+}
+
+.small_image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Positions */
+.small_image_1 {
+  top: 130px;
+  left: 28%;
+}
+
+.small_image_2 {
+  top: 250px;
+  right: 28%;
+}
+
+.small_image_3 {
+  bottom: 150px;
+  left: 28%;
+}
+
+/* Bounce */
+.small_image_1,
+.small_image_2,
+.small_image_3 {
+  animation: imageBounce 2.5s ease-in-out infinite;
+}
+
+@keyframes imageBounce {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Text image at bottom */
+.bottom_text_image {
+  position: absolute;
+  bottom: 70px;
+  left: 48%;
+}
+
+.bottom_text_image img {
+  width: 180px;
+  object-fit: contain;
+}
+
+
+/*
+  IMPORTANT:
+
+  Your img_section.png is being used here.
+
+  If that image already contains:
+  - girl
+  - three small profile images
+  - Olivia information
+  - "It's a match"
+
+  then everything remains together exactly as
+  designed in your Figma asset.
+*/
+
+
+/* =========================================================
+   CTA
+========================================================= */
+
+.cta_section {
+
+    margin-top: 80px;
+    margin-left: 90px;
+
+    
+  width: 100%;
+
+  max-width: 900px;
+
+  min-height: 255px;
+/* 
+  margin:
+    0 auto
+    40px; */
+
+  padding: 35px 25px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #f43f8e,
+      #f97316
+    );
+
+  box-shadow:
+    0 8px 18px
+    rgba(0, 0, 0, 0.12);
+}
+
+
+/* Decorative circles */
+
+.cta_section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+
+  height: 250px;
+
+  left: -45px;
+
+  top: -70px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 100, 121, 0.575);
+}
+
+
+.cta_section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+
+  height: 250px;
+
+  right: -40px;
+
+  bottom: -75px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(255, 119, 40, 0.541);
+}
+
+
+/* CTA content */
+
+.cta_content {
+  position: relative;
+
+  z-index: 2;
+
+  text-align: center;
+
+  color: white;
+}
+
+
+.cta_content h1 {
+  margin-bottom: 20px;
+
+  font-size: 39px;
+
+  font-weight: 700;
+
+  color: white;
+  
+}
+
+
+.cta_content p {
+  margin-bottom: 20px;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.footer {
+  width: 100%;
+
+  min-height: 80px;
+
+  padding:
+    20px
+    35px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+
+.footer_logo img {
+    width: 180px;
+ 
+}
+
+
+
+
+
+.footer p {
+  font-size: 11px;
+
+  font-weight: 600;
+
+  color: #111;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .hero_section {
+    padding:
+      0
+      20px
+      40px;
+  }
+
+
+  .home > h1 {
+    width: 100%;
+
+    font-size: 28px;
+  }
+
+
+  .main_container {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+
+  .para {
+    padding-right: 0;
+  }
+
+
+  .para p {
+    max-width: 100%;
+  }
+
+
+  .bag_img {
+    margin-top: 25px;
+  }
+
+
+  .hero_main_image {
+    max-width: 400px;
+  }
+
+
+  .heart_img {
+    left: 8%;
+  }
+
+
+  .feature_cards {
+    max-width: 330px;
+
+    grid-template-columns: 1fr;
+
+    row-gap: 30px;
+  }
+
+
+  .bottom_image {
+    width: 470px;
+  }
+
+
+  .footer {
+    flex-direction: column;
+
+    gap: 15px;
+
+    text-align: center;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .header {
+    height: 65px;
+  }
+
+
+  .logo img {
+    width: 90px;
+  }
+
+
+  .button {
+    gap: 7px;
+  }
+
+
+  .home > h1 {
+    font-size: 25px;
+
+    margin-top: 15px;
+  }
+
+
+  .para p {
+    font-size: 13px;
+  }
+
+
+  .hero_main_image {
+    width: 100%;
+  }
+
+
+  .heart_img {
+    width: 48px;
+
+    height: 48px;
+
+    left: 3%;
+
+    top: -25px;
+  }
+
+
+  .why_heading {
+    margin-bottom: 40px;
+  }
+
+
+  .why_heading h1 {
+    font-size: 26px;
+  }
+
+
+  .why_heading h2 {
+    font-size: 13px;
+  }
+
+
+  .content_section {
+    padding:
+      55px
+      18px
+      0;
+  }
+
+
+  .feature_card {
+    min-height: 205px;
+  }
+
+
+  .bottom_image_container {
+    margin-top: 60px;
+
+    margin-bottom: 50px;
+  }
+
+
+  .bottom_image {
+    width: 100%;
+  }
+
+
+  .cta_section {
+    width: 100%;
+
+    min-height: 190px;
+
+    padding:
+      30px
+      15px;
+  }
+
+
+  .cta_content h1 {
+    font-size: 24px;
+  }
+
+
+  .cta_content p {
+    font-size: 11px;
+  }
+
+
+  .footer {
+    padding:
+      20px
+      15px;
+  }
+
+}

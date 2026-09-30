@@ -1,0 +1,134 @@
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+  width: 240px;
+  height: 100vh;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  background: #ffffff;
+
+  border-right: 1px solid #eeeeee;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px 18px;
+
+  box-sizing: border-box;
+
+  z-index: 1000;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.sidebar_logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-bottom: 55px;
+}
+
+.sidebar_logo img {
+  width: 145px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+.sidebar_nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+
+/* =========================================
+   NAV ITEM
+========================================= */
+
+.sidebar_item {
+  width: 100%;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+
+  padding: 0 18px;
+
+  box-sizing: border-box;
+
+  text-decoration: none;
+
+  color: #6b6b6b;
+
+  font-size: 16px;
+  font-weight: 500;
+
+  border-radius: 12px;
+
+  transition: all 0.2s ease;
+}
+
+
+/* Icon */
+
+.sidebar_icon {
+  width: 25px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 24px;
+
+  line-height: 1;
+}
+
+
+/* Hover */
+
+.sidebar_item:hover {
+  background: #fff1f7;
+  color: #ec4899;
+}
+
+
+/* Active page */
+
+.sidebar_item.active {
+  background: linear-gradient(
+    135deg,
+    #f43f8e 0%,
+    #ec4899 40%,
+    #f97316 100%
+  );
+
+  color: white;
+
+  font-weight: 600;
+
+  box-shadow: 0 6px 18px rgba(236, 72, 153, 0.20);
+}
+
+
+/* Active icon */
+
+.sidebar_item.active .sidebar_icon {
+  color: white;
+}

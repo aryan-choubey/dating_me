@@ -1,0 +1,378 @@
+/* =========================================
+   DISCOVER PAGE
+========================================= */
+
+.discover_page {
+  min-height: 100vh;
+
+  box-sizing: border-box;
+
+  padding: 32px 50px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.95) 0%,
+      rgba(255, 255, 255, 0) 25%
+    ),
+    linear-gradient(
+      135deg,
+      #ff4fa3 0%,
+      #ff7130 35%,
+      #ff80c0 65%,
+      #ff671b 100%
+    );
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.discover_title {
+  margin: 0 0 32px 15px;
+
+  font-size: 38px;
+
+  font-weight: 700;
+
+  color: #111111;
+}
+
+
+/* =========================================
+   CARD AREA
+========================================= */
+
+.card_container {
+  width: 490px;
+  height: 510px;
+
+  position: relative;
+
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   TINDER CARD
+========================================= */
+
+.tinder_card {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.profile_card {
+  width: 475px;
+  height: 495px;
+
+  position: relative;
+
+  border-radius: 30px;
+
+  background-size: cover;
+  background-position: center;
+
+  border: 10px solid white;
+
+  box-sizing: border-box;
+
+  box-shadow:
+    0 8px 10px rgba(0, 0, 0, 0.35);
+
+  overflow: hidden;
+}
+
+
+/* =========================================
+   PROFILE INFO
+========================================= */
+
+.profile_info {
+  position: absolute;
+
+  left: 45px;
+  right: 45px;
+  bottom: 40px;
+
+  padding: 16px 22px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border-radius: 18px;
+
+  box-sizing: border-box;
+}
+
+
+/* Name */
+
+.profile_name {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+
+.profile_name h2 {
+  margin: 0;
+
+  font-size: 27px;
+
+  color: #111111;
+}
+
+
+/* Verified */
+
+.verified {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 3px solid #f43f8e;
+
+  border-radius: 50%;
+
+  color: #f43f8e;
+
+  font-size: 18px;
+}
+
+
+/* Location */
+
+.profile_info p {
+  margin: 2px 0 0;
+
+  font-size: 18px;
+
+  font-weight: 500;
+
+  color: #666666;
+}
+
+
+/* =========================================
+   ACTION BUTTONS
+========================================= */
+
+.action_buttons {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 35px;
+}
+
+
+.action_button {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 50%;
+
+  border: none;
+
+  background: #ffffff;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 31px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 8px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.action_button:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 9px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Block */
+
+.block_button {
+  color: #444444;
+}
+
+
+/* Pass */
+
+.pass_button {
+  color: #555555;
+
+  font-size: 38px;
+}
+
+
+/* Like */
+
+.like_button {
+  color: #f43f8e;
+
+  width: 65px;
+  height: 65px;
+
+  font-size: 34px;
+}
+
+
+/* Super */
+
+.super_button {
+  color: #111111;
+}
+
+
+/* Profile */
+
+.profile_button {
+  color: #222222;
+}
+
+
+/* =========================================
+   LABELS
+========================================= */
+
+.action_labels {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 24px;
+
+  margin-top: 30px;
+
+  font-size: 17px;
+
+  font-weight: 600;
+
+  color: #555555;
+}
+
+
+.action_labels span {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+}
+
+
+.action_labels b {
+  font-size: 22px;
+}
+
+
+.action_labels span:nth-child(1) b {
+  color: #f5d000;
+}
+
+
+.action_labels span:nth-child(2) b {
+  color: #f43f8e;
+}
+
+
+.action_labels span:nth-child(3) b {
+  color: #00bcd4;
+}
+
+
+.action_labels span:nth-child(4) b {
+  color: #111111;
+}
+
+
+/* =========================================
+   INSTRUCTION
+========================================= */
+
+.swipe_text {
+  text-align: center;
+
+  margin-top: 15px;
+
+  font-size: 18px;
+
+  font-weight: 600;
+
+  color: #555555;
+}
+
+
+/* =========================================
+   NO PROFILES
+========================================= */
+
+.no_more_profiles {
+  position: absolute;
+
+  inset: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  text-align: center;
+
+  background: white;
+
+  border-radius: 30px;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+.no_more_profiles h2 {
+  margin: 0;
+
+  font-size: 28px;
+}
+
+
+.no_more_profiles p {
+  color: #777;
+}

@@ -1,0 +1,11 @@
+.messages_page {
+  padding: 30px;
+}
+
+.messages_page h1 {
+  font-size: 28px;
+}
+
+.chat_list {
+  margin-top: 20px;
+}

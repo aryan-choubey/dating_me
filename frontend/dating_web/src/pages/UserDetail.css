@@ -1,0 +1,614 @@
+/* =========================================================
+   USER DETAIL PAGE
+========================================================= */
+
+.user-detail-page {
+  min-height: 100vh;
+  background: #fdf4f8;
+  padding: 25px 40px 50px;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.user-detail-header {
+  width: 100%;
+  max-width: 1100px;
+  height: 65px;
+  margin: 0 auto;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* =========================================================
+   LOGO
+========================================================= */
+
+.user-detail-logo {
+  width: 130px;
+  height: auto;
+  object-fit: contain;
+}
+
+
+/* =========================================================
+   OUTSIDE BACK BUTTON
+========================================================= */
+
+.outside-back {
+  position: absolute;
+  left: 0;
+
+  border: none;
+  background: transparent;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: #444;
+
+  cursor: pointer;
+  padding: 8px 0;
+
+  transition: 0.2s ease;
+}
+
+.outside-back:hover {
+  color: #ec4899;
+}
+
+
+/* =========================================================
+   STEP COUNT
+========================================================= */
+
+.step-count {
+  position: absolute;
+  right: 0;
+
+  font-size: 15px;
+  font-weight: 500;
+  color: #555;
+}
+
+
+/* =========================================================
+   PROGRESS BAR
+========================================================= */
+
+.progress-container {
+  width: 100%;
+  max-width: 1100px;
+  height: 4px;
+
+  margin: 5px auto 45px;
+
+  background: #eadde3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+
+  background: #ec4899;
+
+  border-radius: 10px;
+
+  transition: width 0.3s ease;
+}
+
+
+/* =========================================================
+   WHITE CARD
+========================================================= */
+
+.user-detail-card {
+  width: 100%;
+  max-width: 600px;
+
+  min-height: 560px;
+
+  margin: 0 auto;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 50px 55px;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.08);
+}
+
+
+/* =========================================================
+   STEP CONTENT
+========================================================= */
+
+.step-content {
+  width: 100%;
+}
+
+.step-content h1 {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 28px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.step-description {
+  margin: 12px 0 35px;
+
+  text-align: center;
+
+  font-size: 15px;
+  line-height: 1.5;
+
+  color: #777;
+}
+
+
+/* =========================================================
+   FORM GROUP
+========================================================= */
+
+.form-group {
+  margin-bottom: 25px;
+}
+
+.form-group label {
+  display: block;
+
+  margin-bottom: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #333;
+}
+
+
+/* =========================================================
+   INPUT
+========================================================= */
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  padding: 13px 15px;
+
+  font-size: 15px;
+
+  outline: none;
+
+  background: #fff;
+
+  transition: 0.2s ease;
+}
+
+.form-group input {
+  height: 48px;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ec4899;
+
+  box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.08);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #aaa;
+}
+
+
+/* =========================================================
+   OPTION BUTTONS
+========================================================= */
+
+.option-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.option-btn {
+  flex: 1;
+
+  min-width: 100px;
+
+  height: 45px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #555;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.option-btn:hover {
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+.option-btn.active {
+  background: #ec4899;
+
+  border-color: #ec4899;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   CONTINUE BUTTON
+========================================================= */
+
+.continue-btn {
+  width: 100%;
+
+  height: 48px;
+
+  margin-top: 20px;
+
+  border: none;
+
+  border-radius: 9px;
+
+  background: #ec4899;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.continue-btn:hover {
+  background: #db2777;
+
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   INSIDE CARD BACK BUTTON
+========================================================= */
+
+.card-back-btn {
+  position: absolute;
+
+  bottom: 50px;
+  left: 55px;
+
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #555;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.card-back-btn:hover {
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+
+/*
+   When the inside Back button exists,
+   make Continue button sit beside it.
+*/
+
+.user-detail-card:has(.card-back-btn) .continue-btn {
+  width: calc(100% - 125px);
+
+  margin-left: 125px;
+}
+
+
+/* =========================================================
+   PHOTO UPLOAD
+========================================================= */
+
+.photo-upload-area {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.photo-box {
+  aspect-ratio: 1 / 1;
+
+  border: 2px dashed #ddd;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 30px;
+
+  color: #aaa;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.photo-box:hover {
+  border-color: #ec4899;
+  color: #ec4899;
+}
+
+.photo-note {
+  margin-top: 15px;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  color: #999;
+}
+
+
+/* =========================================================
+   INTERESTS
+========================================================= */
+
+.interest-container {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-top: 25px;
+}
+
+.interest-btn {
+  padding: 10px 17px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 20px;
+
+  background: #fff;
+
+  color: #555;
+
+  font-size: 14px;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.interest-btn:hover {
+  border-color: #ec4899;
+
+  color: #ec4899;
+}
+
+.interest-btn.active {
+  background: #ec4899;
+
+  border-color: #ec4899;
+
+  color: #fff;
+}
+
+
+/* =========================================================
+   LOCATION
+========================================================= */
+
+.location-box {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+
+  height: 50px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+
+  border-radius: 9px;
+
+  padding: 0 15px;
+
+  margin-top: 25px;
+}
+
+.location-icon {
+  margin-right: 10px;
+
+  font-size: 18px;
+}
+
+.location-box input {
+  flex: 1;
+
+  height: 100%;
+
+  border: none;
+
+  outline: none;
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .user-detail-page {
+    padding: 20px;
+  }
+
+  .progress-container {
+    margin-bottom: 30px;
+  }
+
+  .user-detail-card {
+    max-width: 550px;
+
+    padding: 40px 35px;
+  }
+
+  .card-back-btn {
+    left: 35px;
+    bottom: 40px;
+  }
+
+  .user-detail-card:has(.card-back-btn) .continue-btn {
+    width: calc(100% - 115px);
+
+    margin-left: 115px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 500px) {
+
+  .user-detail-page {
+    padding: 15px;
+  }
+
+  .user-detail-header {
+    height: 55px;
+  }
+
+  .user-detail-logo {
+    width: 105px;
+  }
+
+  .outside-back {
+    font-size: 14px;
+  }
+
+  .step-count {
+    font-size: 13px;
+  }
+
+  .progress-container {
+    margin-top: 5px;
+    margin-bottom: 25px;
+  }
+
+  .user-detail-card {
+    min-height: 520px;
+
+    padding: 35px 22px;
+
+    border-radius: 15px;
+  }
+
+  .step-content h1 {
+    font-size: 24px;
+  }
+
+  .step-description {
+    font-size: 14px;
+
+    margin-bottom: 28px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .option-row {
+    gap: 8px;
+  }
+
+  .option-btn {
+    min-width: 80px;
+  }
+
+  .photo-upload-area {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .card-back-btn {
+    left: 22px;
+    bottom: 35px;
+
+    padding: 0 15px;
+  }
+
+  .user-detail-card:has(.card-back-btn) .continue-btn {
+    width: calc(100% - 100px);
+
+    margin-left: 100px;
+  }
+
+}
