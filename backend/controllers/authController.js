@@ -92,9 +92,15 @@ try{
   const userDetail = async(req,res,next) =>{
     
     try{
+
+
+      const photos = req.files.map(
+        (file) => `/uploads/${file.filename}`
+      );
+
        
          //come from jwt
-          const userId = req.user.userId;
+          const userId = req.user._id;
 
           const {  
             name,
@@ -102,7 +108,6 @@ try{
             gender,
             interestedIn,
             bio,
-            photos,
             interests,
             location
             
@@ -201,7 +206,7 @@ try{
 
       const token = jwt.sign(
         {
-           userID: user._id  
+           userId: user._id  
         },
         process.env.JWT_SECRET,
         {
