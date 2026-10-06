@@ -88,71 +88,80 @@ try{
 //Userdetail controller
 
 
+const userDetail = async (req, res, next) => {
+    try {
 
-  const userDetail = async(req,res,next) =>{
-    
-    try{
+        // Photos uploaded by Multer
+        const photos = req.files.map(
+            (file) => `/uploads/${file.filename}`
+        );
 
 
-      const photos = req.files.map(
-        (file) => `/uploads/${file.filename}`
-      );
+        // User ID from JWT
+        const userId = req.user._id;
 
-       
-         //come from jwt
-          const userId = req.user._id;
 
-          const {  
+        // Data from frontend
+        const {
             name,
             dob,
             gender,
             interestedIn,
             bio,
             interests,
-            location
-            
-               } = req.body;
+            city,
+            state,
+            country
+        } = req.body;
 
-            
 
-               const user = await User.findById(userId);
+        // Find user
+        const user = await User.findById(userId);
 
-               if(!user){
-                const error = new Error("user not found");
-                error.statusCode = 404;
-                  throw error;
-               }
-
+        if (!user) {
+            const error = new Error("User not found");
+            error.statusCode = 404;
+            throw error;
+        }
 
 
         // Update details
-
         user.name = name;
+        user.dob = dob;
         user.gender = gender;
         user.interestedIn = interestedIn;
         user.bio = bio;
+
         user.photos = photos;
+
         user.interests = interests;
-        user.location = location;
+
+        // Updated location
+        user.location = {
+            city: city,
+            state: state,
+            country: country
+        };
+
 
         // Profile completed
         user.profileCompleted = true;
 
+
+        // Save user
         await user.save();
 
+
         res.status(200).json({
-            sucess: true,
-            message: "user details update sucessfully",
-        })
+            success: true,
+            message: "User details updated successfully"
+        });
 
 
-          }catch(error){
-           next(error);
-       }
-   
-
-      };
-
+    } catch (error) {
+        next(error);
+    }
+};
 
 
 

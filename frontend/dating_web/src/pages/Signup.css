@@ -1,0 +1,671 @@
+/* =========================================
+   PAGE
+========================================= */
+
+.signup-page {
+    min-height: 90vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 80px 30px 30px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(244, 63, 142, 0.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 90% 80%,
+            rgba(249, 115, 22, 0.14),
+            transparent 30%
+        ),
+        #fff7fa;
+}
+
+
+/* =========================================
+   BACK BUTTON
+   Outside the card
+========================================= */
+
+.signup-back-button {
+    position: absolute;
+
+    top: 30px;
+    left: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    /* border: 1px solid #f1dce5; */
+    /* border-radius: 10px; */
+    background-color: transparent;
+    border: none;
+
+    /* background: rgba(255, 255, 255, 0.85); */
+
+    /* color: #444; */
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    z-index: 10;
+}
+
+.signup-back-button span {
+    font-size: 19px;
+}
+
+.signup-back-button:hover {
+    color: #EC4899;
+
+    border-color: #EC4899;
+
+    transform: translateX(-2px);
+}
+
+
+/* =========================================
+   MAIN CARD
+========================================= */
+
+.signup-card {
+    width: min(850px, 100%);
+
+    /* min-height: 400px; */
+    height: 700px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    overflow: hidden;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 25px 70px rgba(236, 72, 153, 0.14),
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+
+/* =========================================
+   LEFT SIDE
+========================================= */
+
+.signup-left {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 35px;
+
+    display: flex;
+    flex-direction: column;
+
+    box-sizing: border-box;
+
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            145deg,
+            #F43F8E 0%,
+            #EC4899 48%,
+            #F97316 100%
+        );
+}
+
+
+/* =========================================
+   LEFT TEXTURE
+========================================= */
+
+/* Large soft circle */
+
+.signup-left::before {
+    content: "";
+
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    top: -230px;
+    right: -190px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 0 0 60px rgba(255, 255, 255, 0.035),
+        0 0 0 120px rgba(255, 255, 255, 0.025);
+}
+
+
+/* Bottom circle */
+
+.signup-left::after {
+    content: "";
+
+    position: absolute;
+
+    width: 350px;
+    height: 350px;
+
+    bottom: -210px;
+    left: -180px;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    box-shadow:
+        0 0 0 60px rgba(255, 255, 255, 0.03),
+        0 0 0 120px rgba(255, 255, 255, 0.02);
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.signup-logo {
+    position: relative;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+
+    gap: 11px;
+
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.signup-logo-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+
+    background: rgba(255, 255, 255, 0.18);
+
+    backdrop-filter: blur(8px);
+
+    font-size: 21px;
+}
+
+
+/* =========================================
+   WELCOME CONTENT
+========================================= */
+
+.signup-welcome {
+    position: relative;
+    z-index: 2;
+
+    margin-top: auto;
+    margin-bottom: 30px;
+
+    text-align: left;
+}
+
+
+.signup-small-text {
+    margin: 0 0 15px;
+
+    font-size: 19px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    color: rgba(255, 255, 255, 0.78);
+}
+
+
+.signup-welcome h1 {
+    margin: 0;
+
+    font-size: 30px;
+
+    line-height: 1.05;
+
+    letter-spacing: -2px;
+
+    font-weight: 600;
+    color: white;
+}
+
+
+.signup-left-description {
+    max-width: 360px;
+
+    margin: 20px 0 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+/* =========================================
+   DECORATIVE HEARTS
+========================================= */
+
+.signup-decoration {
+    position: absolute;
+
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.10);
+
+    color: rgba(255, 255, 255, 0.75);
+
+    animation: floatHeart 4s ease-in-out infinite;
+}
+
+.heart-one {
+    width: 65px;
+    height: 65px;
+
+    top: 120px;
+    right: 65px;
+
+    font-size: 25px;
+}
+
+.heart-two {
+    width: 45px;
+    height: 45px;
+
+    top: 210px;
+    right: 145px;
+
+    font-size: 17px;
+
+    animation-delay: 0.7s;
+}
+
+.heart-three {
+    width: 80px;
+    height: 80px;
+
+    bottom: 60px;
+    right: 35px;
+
+    font-size: 30px;
+
+    animation-delay: 1.2s;
+}
+
+
+@keyframes floatHeart {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+/* =========================================
+   RIGHT SIDE
+========================================= */
+
+.signup-right {
+    display: flex;
+    align-items: center;
+
+    padding: 50px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+}
+
+
+.signup-form-container {
+    width: 100%;
+
+    max-width: 400px;
+
+    margin: auto;
+}
+
+
+/* =========================================
+   HEADING
+========================================= */
+
+.signup-heading {
+    margin-bottom: 28px;
+}
+
+
+.signup-heading h2 {
+    margin: 0;
+
+    color: #202020;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    letter-spacing: -0.7px;
+}
+
+
+.signup-heading p {
+    margin: 9px 0 0;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.signup-input-group {
+    margin-bottom: 17px;
+
+}
+
+
+.signup-input-group label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #333;
+
+    font-size: 13px;
+
+    font-weight: 600;
+    text-align: left;
+}
+
+
+.signup-input-group input {
+    width: 100%;
+    height: 50px;
+
+    box-sizing: border-box;
+
+    padding: 0 15px;
+
+    border: 1px solid #e7e7e7;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: #222;
+
+    font-size: 14px;
+
+    transition: 0.2s;
+}
+
+
+.signup-input-group input::placeholder {
+    color: #aaa;
+}
+
+
+.signup-input-group input:focus {
+    border-color: #EC4899;
+
+    box-shadow:
+        0 0 0 3px rgba(236, 72, 153, 0.09);
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.signup-error {
+    margin-bottom: 15px;
+
+    padding: 10px 12px;
+
+    border-radius: 8px;
+
+    background: #fff1f2;
+
+    color: #dc2626;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   CREATE ACCOUNT BUTTON
+========================================= */
+
+.signup-button {
+    width: 100%;
+    height: 51px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border: none;
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #F43F8E,
+            #EC4899,
+            #F97316
+        );
+
+    color: #ffffff;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+
+.signup-button span {
+    font-size: 19px;
+}
+
+
+.signup-button:hover {
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 9px 22px rgba(236, 72, 153, 0.25);
+}
+
+
+.signup-button:active {
+    transform: translateY(0);
+}
+
+
+.signup-button:disabled {
+    opacity: 0.7;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================
+   LOGIN
+========================================= */
+
+.signup-login {
+    display: flex;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 23px;
+
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+.signup-login button {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #EC4899;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+
+.signup-login button:hover {
+    color: #F43F8E;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+    .signup-card {
+        grid-template-columns: 1fr;
+
+        max-width: 500px;
+
+        min-height: auto;
+    }
+
+    .signup-left {
+        min-height: 300px;
+
+        padding: 30px;
+    }
+
+    .signup-welcome {
+        margin-top: 60px;
+    }
+
+    .signup-welcome h1 {
+        font-size: 40px;
+    }
+
+    .signup-right {
+        padding: 40px 35px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 550px) {
+
+    .signup-page {
+        padding: 75px 15px 20px;
+    }
+
+    .signup-back-button {
+        top: 20px;
+        left: 20px;
+    }
+
+    .signup-card {
+        border-radius: 18px;
+    }
+
+    .signup-left {
+        min-height: 280px;
+
+        padding: 25px;
+    }
+
+    .signup-logo {
+        font-size: 21px;
+    }
+
+    .signup-welcome {
+        margin-top: 45px;
+    }
+
+    .signup-welcome h1 {
+        font-size: 36px;
+    }
+
+    .signup-left-description {
+        font-size: 13px;
+    }
+
+    .signup-right {
+        padding: 35px 25px;
+    }
+
+    .signup-heading h2 {
+        font-size: 28px;
+    }
+
+    .signup-decoration {
+        display: none;
+    }
+}

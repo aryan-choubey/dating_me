@@ -1,86 +1,155 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
+
+import { discover, swipeUser } from "../api/allapi";
+const SERVER_URL = "http://localhost:5000";
 
 import "./Discover.css";
 
 const Discover = () => {
 
-  const [people, setPeople] = useState([
-    {
-      id: 1,
-      name: "Olivia",
-      age: 26,
-      location: "San Francisco, CA",
-      image:
-        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=800",
-    },
+  // =========================================
+  // STATE
+  // =========================================
 
-    {
-      id: 2,
-      name: "Emma",
-      age: 24,
-      location: "New York, NY",
-      image:
-        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=800",
-    },
-
-    {
-      id: 3,
-      name: "Sophia",
-      age: 27,
-      location: "Los Angeles, CA",
-      image:
-        "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=800",
-    },
-
-    {
-      id: 4,
-      name: "Ava",
-      age: 25,
-      location: "Chicago, IL",
-      image:
-        "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800",
-    },
-  ]);
+  const [people, setPeople] = useState([]);
+  const [currentIndex, setCurrentIndex] = useState(-1);
+  const [loading, setLoading] = useState(true);
 
 
-  // References for each TinderCard
+  // =========================================
+  // CARD REFERENCES
+  // =========================================
+
   const cardRefs = useRef([]);
 
 
-  // Which card is currently on top
-  const [currentIndex, setCurrentIndex] = useState(
-    people.length - 1
-  );
+  // =========================================
+  // GET DISCOVER USERS
+  // =========================================
+
+  const getDiscoverUsers = async () => {
+
+    try {
+
+      setLoading(true);
+
+      const response = await discover();
+
+      console.log("Discover response:", response.data);
+
+      const users = response.data.users || [];
+      console.log(
+  "First user photo:",
+  response.data.users?.[0]?.photos
+);
+
+      setPeople(users);
+
+      setCurrentIndex(users.length - 1);
+
+    } catch (error) {
+
+      console.error(
+        "Discover error:",
+        error.response?.data || error.message
+      );
+
+    } finally {
+
+      setLoading(false);
+
+    }
+  };
+
+
+  // =========================================
+  // CALL DISCOVER API
+  // =========================================
+
+  useEffect(() => {
+
+    getDiscoverUsers();
+
+  }, []);
+
+
+  // =========================================
+  // SEND SWIPE TO BACKEND
+  // =========================================
+
+  const sendSwipe = async (person, action) => {
+
+    try {
+
+      const data = {
+        toUser: person._id,
+        action: action,
+      };
+
+      console.log("Swipe data:", data);
+
+      const response = await swipeUser(data);
+
+      console.log(
+        "Swipe response:",
+        response.data
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Swipe error:",
+        error.response?.data || error.message
+      );
+
+    }
+  };
 
 
   // =========================================
   // WHEN CARD IS SWIPED
   // =========================================
 
-  const handleSwipe = (direction, person) => {
+  const handleSwipe = async (direction, person) => {
+
+    let action;
+
+    if (direction === "right") {
+
+      action = "like";
+
+    } else if (direction === "left") {
+
+      action = "pass";
+
+    }
+
+    if (!action) {
+      return;
+    }
 
     console.log(
       person.name,
       "swiped",
-      direction
+      action
     );
 
+    // POST /auth/swipeuser
+    await sendSwipe(
+      person,
+      action
+    );
 
-    if (direction === "right") {
-      console.log("❤️ Like:", person.name);
-    }
-
-    if (direction === "left") {
-      console.log("❌ Pass:", person.name);
-    }
-
-    setCurrentIndex((prev) => prev - 1);
+    // Move to next card
+    setCurrentIndex(
+      (prev) => prev - 1
+    );
   };
 
 
   // =========================================
-  // BUTTON ACTION
+  // BUTTON SWIPE
   // =========================================
 
   const swipeCard = async (direction) => {
@@ -89,18 +158,67 @@ const Discover = () => {
       return;
     }
 
-
-    const card = cardRefs.current[currentIndex];
-
+    const card =
+      cardRefs.current[currentIndex];
 
     if (card) {
+
       await card.swipe(direction);
+
     }
   };
 
 
   // =========================================
-  // PROFILE BUTTON
+  // SUPER LIKE
+  // =========================================
+
+  const superLikePerson = async () => {
+
+    if (currentIndex < 0) {
+      return;
+    }
+
+    const person =
+      people[currentIndex];
+
+    await sendSwipe(
+      person,
+      "superlike"
+    );
+
+    setCurrentIndex(
+      (prev) => prev - 1
+    );
+  };
+
+
+  // =========================================
+  // BLOCK
+  // =========================================
+
+  const blockPerson = async () => {
+
+    if (currentIndex < 0) {
+      return;
+    }
+
+    const person =
+      people[currentIndex];
+
+    await sendSwipe(
+      person,
+      "block"
+    );
+
+    setCurrentIndex(
+      (prev) => prev - 1
+    );
+  };
+
+
+  // =========================================
+  // PROFILE
   // =========================================
 
   const handleProfile = () => {
@@ -109,22 +227,47 @@ const Discover = () => {
       return;
     }
 
-    const person = people[currentIndex];
+    const person =
+      people[currentIndex];
 
     console.log(
       "Open profile:",
-      person.name
+      person
     );
+
   };
 
+
+  // =========================================
+  // LOADING
+  // =========================================
+
+  if (loading) {
+
+    return (
+      <div className="discover_page">
+
+        <h1 className="discover_title">
+          Discover
+        </h1>
+
+        <p>
+          Loading profiles...
+        </p>
+
+      </div>
+    );
+
+  }
+
+
+  // =========================================
+  // UI
+  // =========================================
 
   return (
 
     <div className="discover_page">
-
-      {/* =================================
-          HEADING
-      ================================= */}
 
       <h1 className="discover_title">
         Discover
@@ -140,7 +283,7 @@ const Discover = () => {
         {people.map((person, index) => (
 
           <TinderCard
-            key={person.id}
+            key={person._id}
 
             ref={(el) => {
               cardRefs.current[index] = el;
@@ -161,18 +304,16 @@ const Discover = () => {
             <div
               className="profile_card"
               style={{
-                backgroundImage:
-                  `url(${person.image})`,
+               backgroundImage: `url(${SERVER_URL}${person.photos?.[0]})`,
               }}
             >
 
-              {/* Profile information */}
               <div className="profile_info">
 
                 <div className="profile_name">
 
                   <h2>
-                    {person.name}, {person.age}
+                    {person.name}
                   </h2>
 
                   <span className="verified">
@@ -181,9 +322,22 @@ const Discover = () => {
 
                 </div>
 
+
                 <p>
-                  {person.location}
+                  {person.location?.city}
+                  {person.location?.state
+                    ? `, ${person.location.state}`
+                    : ""}
                 </p>
+
+
+                {person.bio && (
+
+                  <p>
+                    {person.bio}
+                  </p>
+
+                )}
 
               </div>
 
@@ -194,7 +348,9 @@ const Discover = () => {
         ))}
 
 
-        {/* No more profiles */}
+        {/* =================================
+            NO MORE PROFILES
+        ================================= */}
 
         {currentIndex < 0 && (
 
@@ -222,19 +378,17 @@ const Discover = () => {
       <div className="action_buttons">
 
 
-        {/* Block */}
+        {/* BLOCK */}
 
         <button
           className="action_button block_button"
-          onClick={() =>
-            swipeCard("left")
-          }
+          onClick={blockPerson}
         >
           ⊘
         </button>
 
 
-        {/* Pass */}
+        {/* PASS */}
 
         <button
           className="action_button pass_button"
@@ -246,7 +400,7 @@ const Discover = () => {
         </button>
 
 
-        {/* Like */}
+        {/* LIKE */}
 
         <button
           className="action_button like_button"
@@ -258,20 +412,17 @@ const Discover = () => {
         </button>
 
 
-        {/* Super Like */}
+        {/* SUPER LIKE */}
 
         <button
           className="action_button super_button"
-          onClick={() => {
-            console.log("⭐ Super Like");
-            swipeCard("right");
-          }}
+          onClick={superLikePerson}
         >
           ☆
         </button>
 
 
-        {/* Profile */}
+        {/* PROFILE */}
 
         <button
           className="action_button profile_button"

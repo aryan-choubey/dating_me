@@ -1,6 +1,9 @@
 
  const Swipe = require("../models/swipe.model");
  const User = require("../models/user.model");
+
+
+ 
 const discoverUsers = async(req,res,next)=>{
 
     try{

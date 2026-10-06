@@ -8,12 +8,16 @@ import Matches from '../pages/Matches'
 import Messages from '../pages/Messages'
 import Profile from '../pages/Profile'
 import Likes from '../pages/Likes'
+import Signup from '../pages/Signup'
+import Login from '../pages/Login'
 
 const AppRoutes = () => {
   return (
    <Routes>
+    <Route path="/signup" element={<Signup/>} />
+    <Route path="/login" element={<Login/>} />
     <Route path="/" element={<Landing/>} />
-     <Route path='/userdetail' element={<UserDetail/>} />
+    <Route path='/userdetail' element={<UserDetail/>} />
 
 <Route element={<MainLayout />}>
   <Route path="/discover" element={<Discover />} />
