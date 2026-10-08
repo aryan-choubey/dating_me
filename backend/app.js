@@ -33,11 +33,14 @@ console.log("Uploads path:", path.join(__dirname, "uploads"));
 const authRoutes  = require("./routes/authRoutes")
 const swipeRoutes = require("./routes/swipeRoutes");
 const messageRoutes = require("./routes/messageRoutes");
+const matchRoutes = require("./routes/matchRoutes")
 
 //routes
 app.use("/api/auth",authRoutes);
-app.use("/api/auth",swipeRoutes);
-app.use("/api/auth",messageRoutes);
+app.use("/api/swipe",swipeRoutes);
+app.use("/api/match",matchRoutes);
+
+app.use("/api/message",messageRoutes);
 
 //errormiddleware
 app.use(errorMiddleware)

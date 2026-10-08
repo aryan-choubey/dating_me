@@ -1,0 +1,11 @@
+
+
+.main_layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main_content {
+  margin-left: 240px;
+  width: calc(100% - 240px);
+  min-height: 100vh;}

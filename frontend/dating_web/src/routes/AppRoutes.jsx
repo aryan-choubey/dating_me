@@ -23,6 +23,7 @@ const AppRoutes = () => {
   <Route path="/discover" element={<Discover />} />
   <Route path="/matches" element={<Matches/>} />
   <Route path="/messages" element={<Messages />} />
+  <Route path="/messages/:userId" element={<Messages />} />
   <Route path="/profile" element={<Profile/>} />
   <Route path="/likes" element={<Likes/>} />
 </Route>

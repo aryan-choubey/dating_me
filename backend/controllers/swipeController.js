@@ -23,7 +23,8 @@ const swipeUser = async(req,res,next)=>{
             "like",
             "pass", 
             "superlike",
-             "block"
+             "block",
+             "reject",
 
          ]
 
@@ -50,7 +51,27 @@ const swipeUser = async(req,res,next)=>{
     
 
 
+       if (action === "reject") {
+      await Swipe.findOneAndUpdate(
+    {
+      fromUser: toUser,
+      toUser: fromUser
+    },
+    {
+      action: "reject"
+    },
+    {
+      new: true
+    }
+  );
 
+  return res.status(200).json({
+    success: true,
+    action: "reject",
+    matched: false,
+    message: "User rejected successfully"
+  });
+}
 
 
     if (action === "block") {
@@ -163,4 +184,80 @@ const swipeUser = async(req,res,next)=>{
 }
 
 
-module.exports = swipeUser;
+
+
+// SENT LIKES
+// ================================
+const getSentLikes = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    const sentLikes = await Swipe.find({
+      fromUser: userId,
+      action: "like"
+    })
+      .populate("toUser", "-password")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      likes: sentLikes
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+// ================================
+// RECEIVED LIKES
+// ================================
+const getReceivedLikes = async (req, res, next) => {
+  try {
+    const userId = req.user._id;
+
+    // Find all matches involving current user
+    const matches = await Match.find({
+      $or: [
+        { user1: userId },
+        { user2: userId }
+      ]
+    });
+
+    // Get IDs of people already matched
+    const matchedUserIds = matches.map((match) => {
+      return match.user1.toString() === userId.toString()
+        ? match.user2
+        : match.user1;
+    });
+
+    const receivedLikes = await Swipe.find({
+      toUser: userId,
+      action: "like",
+      fromUser: {
+        $nin: matchedUserIds
+      }
+    })
+      .populate("fromUser", "-password")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      likes: receivedLikes
+    });
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+
+
+
+
+
+module.exports = {
+  swipeUser,getReceivedLikes,getSentLikes
+};

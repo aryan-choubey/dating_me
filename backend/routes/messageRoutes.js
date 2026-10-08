@@ -3,7 +3,7 @@ const express = require("express");
 
 const router = express.Router();
 
-const {sendMessage,getMessages} = require("../controllers/messageController");
+const {sendMessage,getMessages,markMessageAsRead} = require("../controllers/messageController");
 const authMiddleware = require("../middleware/authMiddleware");
 
 
@@ -13,7 +13,7 @@ router.get("/:userId", authMiddleware,
     async (req, res, next) => {
 
         try{
-           const message = await getMessages(
+           const messages = await getMessages(
             req.user._id,   
             req.params.userId
         );
@@ -21,7 +21,7 @@ router.get("/:userId", authMiddleware,
         res.status(200).json({
             success: true,
             message: "messages fetched successfully",
-            messages
+            messages: messages
         });
     
 

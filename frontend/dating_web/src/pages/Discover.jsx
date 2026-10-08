@@ -2,9 +2,9 @@ import React, { useEffect, useRef, useState } from "react";
 import TinderCard from "react-tinder-card";
 
 import { discover, swipeUser } from "../api/allapi";
-const SERVER_URL = "http://localhost:5000";
-
 import "./Discover.css";
+
+const SERVER_URL = "http://localhost:5000";
 
 const Discover = () => {
 
@@ -39,10 +39,11 @@ const Discover = () => {
       console.log("Discover response:", response.data);
 
       const users = response.data.users || [];
+
       console.log(
-  "First user photo:",
-  response.data.users?.[0]?.photos
-);
+        "First user photo:",
+        users?.[0]?.photos
+      );
 
       setPeople(users);
 
@@ -96,12 +97,20 @@ const Discover = () => {
         response.data
       );
 
+      // IMPORTANT
+      // Return response so other functions
+      // can use response.data
+      return response;
+
     } catch (error) {
 
       console.error(
         "Swipe error:",
         error.response?.data || error.message
       );
+
+      // Send error back to the calling function
+      throw error;
 
     }
   };
@@ -135,16 +144,26 @@ const Discover = () => {
       action
     );
 
-    // POST /auth/swipeuser
-    await sendSwipe(
-      person,
-      action
-    );
+    try {
 
-    // Move to next card
-    setCurrentIndex(
-      (prev) => prev - 1
-    );
+      await sendSwipe(
+        person,
+        action
+      );
+
+      // Move to next card
+      setCurrentIndex(
+        (prev) => prev - 1
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Swipe failed:",
+        error
+      );
+
+    }
   };
 
 
@@ -182,14 +201,25 @@ const Discover = () => {
     const person =
       people[currentIndex];
 
-    await sendSwipe(
-      person,
-      "superlike"
-    );
+    try {
 
-    setCurrentIndex(
-      (prev) => prev - 1
-    );
+      await sendSwipe(
+        person,
+        "superlike"
+      );
+
+      setCurrentIndex(
+        (prev) => prev - 1
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Super Like failed:",
+        error
+      );
+
+    }
   };
 
 
@@ -206,14 +236,52 @@ const Discover = () => {
     const person =
       people[currentIndex];
 
-    await sendSwipe(
-      person,
-      "block"
-    );
+    try {
 
-    setCurrentIndex(
-      (prev) => prev - 1
-    );
+      // Send block to backend
+      const response =
+        await sendSwipe(
+          person,
+          "block"
+        );
+
+      console.log(
+        "Block response:",
+        response.data
+      );
+
+
+      // =====================================
+      // REMOVE BLOCKED USER FROM FRONTEND
+      // =====================================
+
+      const updatedPeople =
+        people.filter(
+          (user) =>
+            user._id !== person._id
+        );
+
+
+      setPeople(updatedPeople);
+
+
+      // =====================================
+      // UPDATE CURRENT INDEX
+      // =====================================
+
+      setCurrentIndex(
+        updatedPeople.length - 1
+      );
+
+    } catch (error) {
+
+      console.error(
+        "Block failed:",
+        error.response?.data ||
+        error.message
+      );
+
+    }
   };
 
 
@@ -245,6 +313,7 @@ const Discover = () => {
   if (loading) {
 
     return (
+
       <div className="discover_page">
 
         <h1 className="discover_title">
@@ -256,6 +325,7 @@ const Discover = () => {
         </p>
 
       </div>
+
     );
 
   }
@@ -283,10 +353,13 @@ const Discover = () => {
         {people.map((person, index) => (
 
           <TinderCard
+
             key={person._id}
 
             ref={(el) => {
+
               cardRefs.current[index] = el;
+
             }}
 
             onSwipe={(direction) =>
@@ -296,7 +369,10 @@ const Discover = () => {
               )
             }
 
-            preventSwipe={["up", "down"]}
+            preventSwipe={[
+              "up",
+              "down"
+            ]}
 
             className="tinder_card"
           >
@@ -304,7 +380,8 @@ const Discover = () => {
             <div
               className="profile_card"
               style={{
-               backgroundImage: `url(${SERVER_URL}${person.photos?.[0]})`,
+                backgroundImage:
+                  `url(${SERVER_URL}${person.photos?.[0]})`,
               }}
             >
 
@@ -324,10 +401,14 @@ const Discover = () => {
 
 
                 <p>
+
                   {person.location?.city}
+
                   {person.location?.state
                     ? `, ${person.location.state}`
-                    : ""}
+                    : ""
+                  }
+
                 </p>
 
 
@@ -464,6 +545,7 @@ const Discover = () => {
       </p>
 
     </div>
+
   );
 };
 

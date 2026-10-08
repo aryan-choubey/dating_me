@@ -1,4 +1,8 @@
 
+
+
+
+
 import api from "./axios";
 
 
@@ -18,9 +22,37 @@ export const userDetail = (formData) =>{
 
 
 export const discover =()=>{
-    return api.get("/auth/discover");
+    return api.get("/swipe/discover");
 }
 
 export const swipeUser =(data)=>{
-    return api.post("/auth/swipeuser",data);
+    return api.post("/swipe/swipeuser",data);
 }
+
+
+export const getLikes =()=>{
+    return api.get("/swipe/getlikes");
+}
+
+export const sentLikes = ()=>{
+    return api.get("/swipe/sentlikes");
+}
+
+export const getMatch = ()=>{
+    return api.get("/match/getmatches");
+}
+
+
+
+// Get old messages with a particular user
+export const getOldMessages = (userId) => {
+  return api.get(`/message/${userId}`);
+};
+
+
+// Mark messages as read
+export const markMessagesAsRead = (senderId) => {
+  return api.post("/message/read", {
+    senderId: senderId,
+  });
+};

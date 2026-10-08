@@ -52,7 +52,7 @@ const User = require("../models/user.model");
         };
 
 
-        if(!message || message.trim()){
+        if(!message || !message.trim()){
             const error = new Error("message cannot be empty");
             error.statusCode = 400;
             throw error;
@@ -61,7 +61,7 @@ const User = require("../models/user.model");
 
         //save message 
 
-        const newMessage = new Message.create({
+        const newMessage = await Message.create({
             sender:senderId,
             receiver:receiverId,
             match:match._id,

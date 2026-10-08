@@ -18,7 +18,7 @@ const swipeSchema = new mongoose.Schema(
     
          action: {
                 type: String,
-               enum: ["like", "pass", "superlike", "block"],
+               enum: ["like", "pass", "superlike", "block", "reject",],
             required: true,
            },
         },

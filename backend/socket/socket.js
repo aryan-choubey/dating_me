@@ -1,8 +1,9 @@
 
 
 const socketAuth = require("./socketAuth");
-const  sendMessage = require("../controllers/messageController");
-
+const {
+  sendMessage
+} = require("../controllers/messageController");
 
 
 const setupSocket = (io) => {
@@ -10,7 +11,7 @@ const setupSocket = (io) => {
     io.use(socketAuth);
 
 
-    io.on("connections", (socket) =>{
+    io.on("connection", (socket) =>{
         
         console.log(
             "user connected",

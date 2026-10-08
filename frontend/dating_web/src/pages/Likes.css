@@ -1,0 +1,545 @@
+/* =========================================
+   LIKES PAGE
+========================================= */
+
+.likes-page {
+  min-height: 100vh;
+  padding: 35px 45px;
+  background: #fff7fb;
+  box-sizing: border-box;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.likes-header {
+  max-width: 1200px;
+  margin: 0 auto 25px;
+}
+
+.likes-header h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 700;
+  color: #222;
+}
+
+.likes-header p {
+  margin: 6px 0 0;
+  font-size: 15px;
+  color: #777;
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+.likes-tabs {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+
+  display: flex;
+  gap: 5px;
+
+  background: #ffffff;
+  padding: 5px;
+
+  border-radius: 14px;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+}
+
+.likes-tab {
+  flex: 1;
+
+  border: none;
+  outline: none;
+
+  background: transparent;
+
+  padding: 13px 20px;
+
+  border-radius: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  color: #777;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+.likes-tab:hover {
+  background: #fff0f6;
+  color: #f43f8e;
+}
+
+.likes-tab.active {
+  background: #f43f8e;
+  color: #ffffff;
+}
+
+
+/* =========================================
+   TAB COUNT
+========================================= */
+
+.likes-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 20px;
+  height: 20px;
+
+  margin-left: 8px;
+  padding: 0 6px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.25);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* =========================================
+   CONTENT
+========================================= */
+
+.likes-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+/* =========================================
+   HORIZONTAL CARD CONTAINER
+========================================= */
+
+.horizontal-likes {
+  display: flex;
+  flex-direction: row;
+
+  gap: 22px;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  padding: 10px 5px 20px;
+
+  scroll-behavior: smooth;
+
+  scrollbar-width: thin;
+}
+
+
+/* Chrome / Edge / Safari */
+
+.horizontal-likes::-webkit-scrollbar {
+  height: 7px;
+}
+
+.horizontal-likes::-webkit-scrollbar-track {
+  background: #ffeaf3;
+  border-radius: 10px;
+}
+
+.horizontal-likes::-webkit-scrollbar-thumb {
+  background: #f43f8e;
+  border-radius: 10px;
+}
+
+.horizontal-likes::-webkit-scrollbar-thumb:hover {
+  background: #e8327f;
+}
+
+
+/* =========================================
+   INDIVIDUAL PROFILE CARD
+========================================= */
+
+.like-card {
+  flex: 0 0 230px;
+
+  width: 230px;
+
+  background: #ffffff;
+
+  border-radius: 18px;
+
+  padding: 15px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.like-card:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.11);
+}
+
+
+/* =========================================
+   PROFILE IMAGE
+========================================= */
+
+.like-avatar {
+  width: 100%;
+  height: 240px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-radius: 14px;
+
+  margin-bottom: 14px;
+
+  background: #f5f5f5;
+}
+
+
+/* =========================================
+   USER INFORMATION
+========================================= */
+
+.like-user-info {
+  margin: 0;
+}
+
+.like-user-info h3 {
+  margin: 5px 0 8px;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  color: #222;
+}
+
+.like-user-info span {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 13px;
+
+  color: #888;
+}
+
+.like-user-info p {
+  margin: 0 0 12px;
+
+  font-size: 13px;
+
+  line-height: 1.4;
+
+  color: #777;
+
+  white-space: nowrap;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   ACCEPT / REJECT BUTTONS
+========================================= */
+
+.like-actions {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+
+  margin-top: 10px;
+}
+
+.like-actions button {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  padding: 10px;
+
+  border-radius: 9px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.like-actions button:active {
+  transform: scale(0.97);
+}
+
+
+/* =========================================
+   ACCEPT BUTTON
+========================================= */
+
+.accept-button {
+  background: #f43f8e;
+
+  color: #ffffff;
+}
+
+.accept-button:hover {
+  background: #e8327f;
+}
+
+.accept-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   REJECT BUTTON
+========================================= */
+
+.reject-button {
+  background: #f1f1f1;
+
+  color: #555;
+}
+
+.reject-button:hover {
+  background: #e4e4e4;
+}
+
+.reject-button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================================
+   SENT LIKE STATUS
+========================================= */
+
+.sent-status {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 5px;
+
+  margin-top: 10px;
+
+  padding: 8px 14px;
+
+  border-radius: 20px;
+
+  background: #fff0f6;
+
+  color: #f43f8e;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.sent-status span {
+  font-size: 15px;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-likes {
+  background: #ffffff;
+
+  border-radius: 16px;
+
+  padding: 60px 20px;
+
+  text-align: center;
+
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.empty-icon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0f6;
+
+  color: #f43f8e;
+
+  font-size: 32px;
+}
+
+.empty-likes h3 {
+  margin: 0 0 8px;
+
+  font-size: 19px;
+
+  color: #333;
+}
+
+.empty-likes p {
+  margin: 0;
+
+  font-size: 14px;
+
+  color: #888;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.likes-loading {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  color: #f43f8e;
+
+  font-size: 18px;
+}
+
+
+/* =========================================
+   RESPONSIVE - TABLET
+========================================= */
+
+@media (max-width: 900px) {
+  .likes-page {
+    padding: 30px 25px;
+  }
+
+  .like-card {
+    flex: 0 0 220px;
+
+    width: 220px;
+  }
+
+  .like-avatar {
+    height: 225px;
+  }
+}
+
+
+/* =========================================
+   RESPONSIVE - MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+  .likes-page {
+    padding: 25px 15px;
+  }
+
+  .likes-header h1 {
+    font-size: 27px;
+  }
+
+  .likes-header p {
+    font-size: 14px;
+  }
+
+  .likes-tabs {
+    margin-bottom: 20px;
+  }
+
+  .likes-tab {
+    padding: 12px 8px;
+
+    font-size: 13px;
+  }
+
+  .likes-count {
+    margin-left: 4px;
+  }
+
+  .horizontal-likes {
+    gap: 15px;
+
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  .like-card {
+    flex: 0 0 200px;
+
+    width: 200px;
+
+    padding: 12px;
+
+    border-radius: 16px;
+  }
+
+  .like-avatar {
+    height: 210px;
+
+    border-radius: 12px;
+  }
+
+  .like-user-info h3 {
+    font-size: 18px;
+  }
+
+  .like-actions button {
+    padding: 9px;
+
+    font-size: 13px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 400px) {
+  .like-card {
+    flex: 0 0 185px;
+
+    width: 185px;
+  }
+
+  .like-avatar {
+    height: 195px;
+  }
+}
