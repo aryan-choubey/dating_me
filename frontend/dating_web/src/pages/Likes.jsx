@@ -18,9 +18,6 @@ const Likes = () => {
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(null);
 
-  // =========================================
-  // FETCH RECEIVED LIKES
-  // =========================================
 
   const fetchReceivedLikes = async () => {
     try {
@@ -39,9 +36,6 @@ const Likes = () => {
     }
   };
 
-  // =========================================
-  // FETCH SENT LIKES
-  // =========================================
 
   const fetchSentLikes = async () => {
     try {
@@ -60,9 +54,6 @@ const Likes = () => {
     }
   };
 
-  // =========================================
-  // FETCH BOTH
-  // =========================================
 
   const fetchLikes = async () => {
     try {
@@ -82,9 +73,6 @@ const Likes = () => {
     fetchLikes();
   }, []);
 
-  // =========================================
-  // ACCEPT
-  // =========================================
 
   const handleAccept = async (like) => {
     try {
@@ -104,11 +92,7 @@ const Likes = () => {
         action: "like",
       });
 
-      /*
-        Remove immediately from received likes.
-        Therefore it cannot be accepted again
-        without fetching it again.
-      */
+      
 
       setReceivedLikes((prev) =>
         prev.filter(
@@ -116,10 +100,6 @@ const Likes = () => {
         )
       );
 
-      /*
-        Refresh sent likes so this person appears
-        in Sent Likes if your backend returns it.
-      */
 
       await fetchSentLikes();
 
@@ -133,9 +113,6 @@ const Likes = () => {
     }
   };
 
-  // =========================================
-  // REJECT
-  // =========================================
 
   const handleReject = async (like) => {
     try {
@@ -148,10 +125,6 @@ const Likes = () => {
         return;
       }
 
-      /*
-        Your backend valid action is "pass",
-        NOT "reject".
-      */
 
       await swipeUser({
         toUser: userId,
@@ -175,9 +148,6 @@ const Likes = () => {
     }
   };
 
-  // =========================================
-  // LOADING
-  // =========================================
 
   if (loading) {
     return (
@@ -189,25 +159,14 @@ const Likes = () => {
     );
   }
 
-  // =========================================
-  // GET USER FROM RECEIVED LIKE
-  // =========================================
 
   const getReceivedUser = (like) => {
     return like.fromUser;
   };
 
-  // =========================================
-  // GET USER FROM SENT LIKE
-  // =========================================
-
   const getSentUser = (like) => {
     return like.toUser;
   };
-
-  // =========================================
-  // IMAGE URL
-  // =========================================
 
   const getImage = (user) => {
     if (user?.photos?.[0]) {
@@ -217,16 +176,9 @@ const Likes = () => {
     return "/default-profile.png";
   };
 
-  // =========================================
-  // UI
-  // =========================================
-
   return (
     <div className="likes-page">
 
-      {/* =====================================
-          HEADER
-      ===================================== */}
 
       <div className="likes-header">
 
@@ -239,9 +191,6 @@ const Likes = () => {
       </div>
 
 
-      {/* =====================================
-          TABS
-      ===================================== */}
 
       <div className="likes-tabs">
 
@@ -289,10 +238,6 @@ const Likes = () => {
       </div>
 
 
-      {/* =====================================
-          RECEIVED LIKES
-      ===================================== */}
-
       {activeTab === "received" && (
 
         <section className="likes-content">
@@ -332,7 +277,6 @@ const Likes = () => {
                     key={like._id}
                   >
 
-                    {/* PHOTO */}
 
                     <img
                       src={getImage(user)}
@@ -341,7 +285,6 @@ const Likes = () => {
                     />
 
 
-                    {/* USER INFO */}
 
                     <div className="like-user-info">
 
@@ -364,7 +307,6 @@ const Likes = () => {
                     </div>
 
 
-                    {/* ACTIONS */}
 
                     <div className="like-actions">
 
@@ -410,11 +352,6 @@ const Likes = () => {
 
       )}
 
-
-      {/* =====================================
-          SENT LIKES
-      ===================================== */}
-
       {activeTab === "sent" && (
 
         <section className="likes-content">
@@ -453,7 +390,6 @@ const Likes = () => {
                     key={like._id}
                   >
 
-                    {/* PHOTO */}
 
                     <img
                       src={getImage(user)}
@@ -462,7 +398,6 @@ const Likes = () => {
                     />
 
 
-                    {/* USER INFO */}
 
                     <div className="like-user-info">
 
@@ -485,7 +420,6 @@ const Likes = () => {
                     </div>
 
 
-                    {/* SENT STATUS */}
 
                     <div className="sent-status">
                       <span>

@@ -29,13 +29,12 @@ const navigate = useNavigate();
     <div className="landing">
 
 
-      {/* =====================================================
-          HERO SECTION
-      ===================================================== */}
+
 
       <section className="hero_section">
 
-        {/* ================= HEADER ================= */}
+        
+        
 
         <header className="header">
 
@@ -69,9 +68,6 @@ const navigate = useNavigate();
 
 
 
-        {/* ================= HERO CONTENT ================= */}
-
-        {/* ================= HERO ================= */}
 
 <div className="home">
 
@@ -88,7 +84,8 @@ const navigate = useNavigate();
   <div className="main_container">
 
 
-    {/* ================= LEFT TEXT ================= */}
+   
+   
 
     <div className="para">
 
@@ -116,7 +113,8 @@ const navigate = useNavigate();
     </div>
 
 
-    {/* ================= RIGHT IMAGE ================= */}
+    
+    
 
     <div className="bag_img">
 
@@ -129,7 +127,8 @@ const navigate = useNavigate();
       />
 
 
-      {/* Heart Image */}
+      
+      
 
       <div className="heart_img">
 
@@ -145,7 +144,7 @@ const navigate = useNavigate();
   </div>
 
 
-  {/* Join Button */}
+
 
   <Button  onClick={() => navigate("/login")} className="join-button">
     Join now
@@ -157,9 +156,8 @@ const navigate = useNavigate();
 
 
 
-      {/* =====================================================
-          WHITE DIVIDER
-      ===================================================== */}
+      
+      
 
       <div className="white_divider"></div>
 
@@ -171,18 +169,11 @@ const navigate = useNavigate();
 
 
 
-      {/* =====================================================
-          WHY SOULSPARK SECTION
-      ===================================================== */}
+
 
       <section className="content_section">
 
 
-
-
-             {/* =================================================
-            GIRL / PROFILE IMAGE SECTION
-        ================================================= */}
 
         <div className="bottom_image_container">
 
@@ -191,22 +182,18 @@ const navigate = useNavigate();
     <img src={bag_img} alt="SoulSpark profiles" />
   </div>
 
-  {/* Small Image 1 */}
   <div className="small_image small_image_1">
     <img src={image1} alt="" />
   </div>
 
-  {/* Small Image 2 */}
   <div className="small_image small_image_2">
     <img src={image2} alt="" />
   </div>
 
-  {/* Small Image 3 */}
   <div className="small_image small_image_3">
     <img src={image3} alt="" />
   </div>
 
-  {/* Bottom Text Image */}
   <div className="bottom_text_image">
     <img src={textImage} alt="" />
   </div>
@@ -214,7 +201,6 @@ const navigate = useNavigate();
 </div>
 
 
-        {/* ================= HEADING ================= */}
 
         <div className="why_heading">
 
@@ -238,7 +224,6 @@ const navigate = useNavigate();
 
 
 
-        {/* ================= FOUR CARDS ================= */}
 
         <div className="feature_cards">
 
@@ -272,7 +257,6 @@ const navigate = useNavigate();
 
 
 
-          {/* Card 2 */}
 
           <div className="feature_card">
 
@@ -301,7 +285,6 @@ const navigate = useNavigate();
 
 
 
-          {/* Card 3 */}
 
           <div className="feature_card">
 
@@ -330,7 +313,6 @@ const navigate = useNavigate();
 
 
 
-          {/* Card 4 */}
 
           <div className="feature_card">
 
@@ -368,10 +350,6 @@ const navigate = useNavigate();
       
 
 
-        {/* =================================================
-            CTA
-        ================================================= */}
-
         <div className="cta_section">
 
           <div className="cta_content">
@@ -399,10 +377,6 @@ const navigate = useNavigate();
       </section>
 
 
-
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
 
       <footer className="footer">
 

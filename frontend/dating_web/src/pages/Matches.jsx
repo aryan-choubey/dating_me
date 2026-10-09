@@ -49,9 +49,6 @@ const Matches = () => {
   };
 
 
-  // ==================================
-  // MESSAGE BUTTON
-  // ==================================
 
   const handleMessage = (user) => {
     console.log("Open message with:", user._id);
@@ -61,9 +58,6 @@ const Matches = () => {
   };
 
 
-  // ==================================
-  // LOADING
-  // ==================================
 
   if (loading) {
     return (
@@ -75,10 +69,6 @@ const Matches = () => {
     );
   }
 
-
-  // ==================================
-  // UI
-  // ==================================
 
   return (
     <div className="match-page">
@@ -94,7 +84,6 @@ const Matches = () => {
       </div>
 
 
-      {/* NO MATCHES */}
 
       {matches.length === 0 ? (
 
@@ -117,8 +106,8 @@ const Matches = () => {
 
       ) : (
 
-        /* MATCH CARDS */
 
+        
         <div className="matches-container">
 
           {matches.map((match) => {
@@ -131,7 +120,7 @@ const Matches = () => {
                 key={match.matchId}
               >
 
-                {/* PROFILE IMAGE */}
+
 
                 <img
                   src={getImage(user)}
@@ -140,7 +129,7 @@ const Matches = () => {
                 />
 
 
-                {/* NAME */}
+
 
                 <div className="match-user-info">
 
@@ -151,7 +140,7 @@ const Matches = () => {
                 </div>
 
 
-                {/* MESSAGE */}
+
 
                 <button
                   className="message-button"

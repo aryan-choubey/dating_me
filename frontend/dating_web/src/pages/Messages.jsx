@@ -30,11 +30,7 @@ const Messages = () => {
   const [loadingUsers, setLoadingUsers] = useState(true);
   const [loadingMessages, setLoadingMessages] = useState(false);
 
-  // =========================================
-  // GET MATCHED USERS
-  // LEFT SIDE
-  // =========================================
-
+  
   useEffect(() => {
     const loadUsers = async () => {
       try {
@@ -75,9 +71,7 @@ const Messages = () => {
     loadUsers();
   }, []);
 
-  // =========================================
-  // SELECT USER FROM URL
-  // =========================================
+  
 
   useEffect(() => {
     if (
@@ -96,10 +90,7 @@ const Messages = () => {
     }
 
   }, [userId, users]);
-
-  // =========================================
-  // LOAD OLD MESSAGES
-  // =========================================
+  
 
   useEffect(() => {
     if (!selectedUser?._id) {
@@ -144,9 +135,7 @@ const Messages = () => {
 
   }, [selectedUser]);
 
-  // =========================================
-  // SOCKET CONNECTION
-  // =========================================
+  
 
   useEffect(() => {
     socket.connect();
@@ -156,11 +145,7 @@ const Messages = () => {
     };
   }, []);
 
-  // =========================================
-  // RECEIVE MESSAGE
-  // FROM OTHER USER
-  // =========================================
-
+  
   useEffect(() => {
 
     const handleReceiveMessage = (
@@ -172,16 +157,14 @@ const Messages = () => {
         newMessage
       );
 
-      // Backend populates sender:
-      // sender = { _id, name, photos }
+      
 
       const senderId =
         newMessage.sender?._id ||
         newMessage.sender ||
         newMessage.senderId;
 
-      // Only add message if it belongs
-      // to currently opened chat
+        
 
       if (senderId === userId) {
 
@@ -210,10 +193,7 @@ const Messages = () => {
 
   }, [userId]);
 
-  // =========================================
-  // MESSAGE SENT BY ME
-  // =========================================
-
+  
   useEffect(() => {
 
     const handleMessageSent = (
@@ -249,9 +229,7 @@ const Messages = () => {
 
   }, []);
 
-  // =========================================
-  // CLICK USER
-  // =========================================
+  
 
   const handleSelectUser = (user) => {
 
@@ -264,9 +242,7 @@ const Messages = () => {
     );
   };
 
-  // =========================================
-  // SEND MESSAGE
-  // =========================================
+  
 
   const handleSendMessage = () => {
 
@@ -298,10 +274,7 @@ const Messages = () => {
     setMessage("");
   };
 
-  // =========================================
-  // ENTER TO SEND
-  // =========================================
-
+  
   const handleKeyDown = (event) => {
 
     if (
@@ -315,10 +288,7 @@ const Messages = () => {
     }
   };
 
-  // =========================================
-  // IMAGE
-  // =========================================
-
+  
   const getProfileImage = (user) => {
 
     if (
@@ -337,16 +307,11 @@ const Messages = () => {
     return `${SERVER_URL}${image}`;
   };
 
-  // =========================================
-  // RENDER
-  // =========================================
-
+  
   return (
     <div className="message-page">
 
-      {/* =====================================
-          LEFT SIDE
-      ====================================== */}
+
 
       <aside className="message-sidebar">
 
@@ -439,9 +404,7 @@ const Messages = () => {
 
       </aside>
 
-      {/* =====================================
-          RIGHT SIDE
-      ====================================== */}
+
 
       <main className="message-chat">
 
@@ -468,9 +431,6 @@ const Messages = () => {
 
           <>
 
-            {/* =================================
-                CHAT HEADER
-            ================================== */}
 
             <div className="chat-header">
 
@@ -515,9 +475,6 @@ const Messages = () => {
 
             </div>
 
-            {/* =================================
-                MESSAGES
-            ================================== */}
 
             <div className="chat-messages">
 
@@ -556,12 +513,7 @@ const Messages = () => {
                       item.sender ||
                       item.senderId;
 
-                    /*
-                      selectedUser is the other person.
-
-                      If sender is NOT selectedUser,
-                      message was sent by me.
-                    */
+                      
 
                     const isMine =
                       senderId !==
@@ -619,9 +571,6 @@ const Messages = () => {
 
             </div>
 
-            {/* =================================
-                MESSAGE INPUT
-            ================================== */}
 
             <div className="chat-input">
 

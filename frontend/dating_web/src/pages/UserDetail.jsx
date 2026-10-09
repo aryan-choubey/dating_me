@@ -118,9 +118,7 @@ const UserDetail = () => {
 
             const data = new FormData();
 
-            // ===============================
-            // BASIC DETAILS
-            // ===============================
+            
 
             data.append("name", formData.name);
             data.append("gender", formData.gender);
@@ -130,25 +128,19 @@ const UserDetail = () => {
             );
             data.append("bio", formData.bio);
 
-            // ===============================
-            // LOCATION
-            // ===============================
+            
 
             data.append("city", formData.city);
             data.append("state", formData.state);
             data.append("country", formData.country);
 
-            // ===============================
-            // INTERESTS
-            // ===============================
+            
 
             formData.interests.forEach((interest) => {
                 data.append("interests", interest);
             });
 
-            // ===============================
-            // PHOTOS
-            // ===============================
+            
 
             formData.photos.forEach((photo) => {
                 if (photo) {
@@ -156,9 +148,7 @@ const UserDetail = () => {
                 }
             });
 
-            // ===============================
-            // API
-            // ===============================
+            
 
             const response = await userDetail(data);
 
@@ -167,9 +157,7 @@ const UserDetail = () => {
                 response.data
             );
 
-            // ===============================
-            // DISCOVER PAGE
-            // ===============================
+            
 
             navigate("/discover");
 
@@ -189,7 +177,7 @@ const UserDetail = () => {
     return (
         <div className="user-detail-page">
 
-            {/* ================= HEADER ================= */}
+
 
             <div className="user-detail-header">
 
@@ -213,7 +201,7 @@ const UserDetail = () => {
             </div>
 
 
-            {/* ================= PROGRESS ================= */}
+
 
             <div className="progress-container">
 
@@ -227,7 +215,7 @@ const UserDetail = () => {
             </div>
 
 
-            {/* ================= CARD ================= */}
+
 
             <div className="user-detail-card">
 
@@ -241,9 +229,7 @@ const UserDetail = () => {
                 )}
 
 
-                {/* ================================================= */}
-                {/* STEP 1 */}
-                {/* ================================================= */}
+
 
                 {step === 1 && (
                     <div className="step-content">
@@ -272,7 +258,7 @@ const UserDetail = () => {
                         </div>
 
 
-                        {/* GENDER */}
+
 
                         <div className="form-group">
 
@@ -313,7 +299,7 @@ const UserDetail = () => {
                         </div>
 
 
-                        {/* INTERESTED IN */}
+
 
                         <div className="form-group">
 
@@ -365,9 +351,6 @@ const UserDetail = () => {
                 )}
 
 
-                {/* ================================================= */}
-                {/* STEP 2 */}
-                {/* ================================================= */}
 
                 {step === 2 && (
                     <div className="step-content">
@@ -404,9 +387,7 @@ const UserDetail = () => {
                 )}
 
 
-                {/* ================================================= */}
-                {/* STEP 3 */}
-                {/* ================================================= */}
+
 
                 {step === 3 && (
                     <div className="step-content">
@@ -476,9 +457,7 @@ const UserDetail = () => {
                 )}
 
 
-                {/* ================================================= */}
-                {/* STEP 4 */}
-                {/* ================================================= */}
+
 
                 {step === 4 && (
                     <div className="step-content">
@@ -540,9 +519,7 @@ const UserDetail = () => {
                 )}
 
 
-                {/* ================================================= */}
-                {/* STEP 5 */}
-                {/* ================================================= */}
+
 
                 {step === 5 && (
                     <div className="step-content">
@@ -554,7 +531,7 @@ const UserDetail = () => {
                         </p>
 
 
-                        {/* CITY */}
+
 
                         <div className="form-group">
 
@@ -571,7 +548,7 @@ const UserDetail = () => {
                         </div>
 
 
-                        {/* STATE */}
+
 
                         <div className="form-group">
 
@@ -588,7 +565,7 @@ const UserDetail = () => {
                         </div>
 
 
-                        {/* COUNTRY */}
+
 
                         <div className="form-group">
 
@@ -605,7 +582,7 @@ const UserDetail = () => {
                         </div>
 
 
-                        {/* ERROR */}
+
 
                         {error && (
                             <div className="login-error">
@@ -614,7 +591,7 @@ const UserDetail = () => {
                         )}
 
 
-                        {/* SUBMIT */}
+
 
                         <button
                             className="continue-btn"

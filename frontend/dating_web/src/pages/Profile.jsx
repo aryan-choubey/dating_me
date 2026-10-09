@@ -14,10 +14,7 @@ const SERVER_URL = "http://localhost:5000";
 const Profile = () => {
   const navigate = useNavigate();
 
-  // =========================================
-  // STATE
-  // =========================================
-
+  
   const [user, setUser] = useState(null);
 
   const [loading, setLoading] = useState(true);
@@ -44,9 +41,7 @@ const Profile = () => {
   const [photoFiles, setPhotoFiles] = useState([]);
   const [photoPreviews, setPhotoPreviews] = useState([]);
 
-  // =========================================
-  // FETCH PROFILE
-  // =========================================
+  
 
   const fetchProfile = async () => {
     try {
@@ -101,29 +96,24 @@ console.log("Response user:", response.user);
     fetchProfile();
   }, []);
 
-  // =========================================
-  // IMAGE URL
-  // =========================================
+  
 
  const getPhotoUrl = (photo) => {
   if (!photo) return "";
 
-  // Newly selected photos: display immediately
+
   if (photo.startsWith("blob:") || photo.startsWith("data:")) {
     return photo;
   }
 
-  // Already complete URLs
+
   if (photo.startsWith("http://") || photo.startsWith("https://")) {
     return photo;
   }
 
-  // Existing photos stored on the backend
+
   return `${SERVER_URL}${photo.startsWith("/") ? "" : "/"}${photo}`;
 };
-  // =========================================
-  // CALCULATE AGE
-  // =========================================
 
   const calculateAge = (dob) => {
     if (!dob) return null;
@@ -144,10 +134,7 @@ console.log("Response user:", response.user);
     return age >= 0 ? age : null;
   };
 
-  // =========================================
-  // FORM INPUT
-  // =========================================
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -157,9 +144,7 @@ console.log("Response user:", response.user);
     }));
   };
 
-  // =========================================
-  // INTERESTS
-  // =========================================
+  
 
   const handleInterestChange = (event) => {
     const interests = event.target.value
@@ -173,9 +158,7 @@ console.log("Response user:", response.user);
     }));
   };
 
-  // =========================================
-  // PHOTO SELECTION
-  // =========================================
+  
 
   const handlePhotoChange = (event) => {
     const files = Array.from(event.target.files || []);
@@ -209,9 +192,7 @@ console.log("Response user:", response.user);
     setPhotoPreviews(previews);
   };
 
-  // =========================================
-  // CANCEL EDITING
-  // =========================================
+  
 
   const handleCancelEdit = () => {
     setIsEditing(false);
@@ -222,9 +203,7 @@ console.log("Response user:", response.user);
     fetchProfile();
   };
 
-  // =========================================
-  // SAVE PROFILE
-  // =========================================
+  
 
   const handleSaveProfile = async (event) => {
     event.preventDefault();
@@ -256,7 +235,7 @@ console.log("Response user:", response.user);
         data.append("photos", file);
       });
 
-      // Call your existing edit user-detail API.
+
       const response = await userDetail(data);
 
       if (!response.success) {
@@ -281,22 +260,19 @@ console.log("Response user:", response.user);
     }
   };
 
-  // =========================================
-  // LOGOUT
-  // =========================================
-
+  
   const handleLogout = async () => {
     try {
       setLoggingOut(true);
       setError("");
 
-      // Call your existing logout API.
+
       await logoutApi();
 
-      // Clear locally stored user data.
+
       localStorage.removeItem("user");
 
-      // Redirect to login.
+
       navigate("/login", { replace: true });
     } catch (err) {
       console.error("Logout error:", err);
@@ -310,10 +286,7 @@ console.log("Response user:", response.user);
     }
   };
 
-  // =========================================
-  // LOADING SCREEN
-  // =========================================
-
+  
   if (loading) {
     return (
       <div className="profile_page">
@@ -326,9 +299,7 @@ console.log("Response user:", response.user);
     );
   }
 
-  // =========================================
-  // PROFILE ERROR
-  // =========================================
+  
 
   if (!user) {
     return (
@@ -361,9 +332,7 @@ console.log("Response user:", response.user);
     );
   }
 
-  // =========================================
-  // DISPLAY DATA
-  // =========================================
+  
 
   const age = calculateAge(user.dob);
 
@@ -375,15 +344,13 @@ console.log("Response user:", response.user);
     .filter(Boolean)
     .join(", ");
 
-  // =========================================
-  // MAIN UI
-  // =========================================
+    
 
   return (
     <div className="profile_page">
       <div className="profile_container">
 
-        {/* HEADER */}
+
 
         <div className="profile_heading">
           <div>
@@ -403,7 +370,7 @@ console.log("Response user:", response.user);
           <div className="profile_heart_badge">♥</div>
         </div>
 
-        {/* ALERT MESSAGES */}
+
 
         {error && (
           <div className="profile_message profile_message_error">
@@ -417,11 +384,11 @@ console.log("Response user:", response.user);
           </div>
         )}
 
-        {/* PROFILE CARD */}
+
 
         <div className="profile_main_card">
 
-          {/* LEFT COLUMN */}
+
 
           <div className="profile_left">
             <div className="profile_photo_wrapper">
@@ -500,7 +467,7 @@ console.log("Response user:", response.user);
             )}
           </div>
 
-          {/* RIGHT COLUMN */}
+
 
           <div className="profile_right">
             {isEditing ? (
@@ -517,7 +484,7 @@ console.log("Response user:", response.user);
                   </div>
                 </div>
 
-                {/* NAME */}
+
 
                 <div className="profile_form_group">
                   <label htmlFor="profile-name">Full Name</label>
@@ -532,7 +499,7 @@ console.log("Response user:", response.user);
                   />
                 </div>
 
-                {/* DOB AND GENDER */}
+
 
                 <div className="profile_form_row">
                   <div className="profile_form_group">
@@ -566,7 +533,7 @@ console.log("Response user:", response.user);
                   </div>
                 </div>
 
-                {/* PREFERENCE */}
+
 
                 <div className="profile_form_group">
                   <label htmlFor="profile-interested">
@@ -586,7 +553,7 @@ console.log("Response user:", response.user);
                   </select>
                 </div>
 
-                {/* BIO */}
+
 
                 <div className="profile_form_group">
                   <label htmlFor="profile-bio">About Me</label>
@@ -601,7 +568,7 @@ console.log("Response user:", response.user);
                   />
                 </div>
 
-                {/* INTERESTS */}
+
 
                 <div className="profile_form_group">
                   <label htmlFor="profile-interests">
@@ -619,7 +586,7 @@ console.log("Response user:", response.user);
                   <small>Separate interests with commas.</small>
                 </div>
 
-                {/* PHOTOS */}
+
 
                 <div className="profile_form_group">
                   <label htmlFor="profile-photos">
@@ -829,7 +796,7 @@ console.log("Response user:", response.user);
                   </div>
                 </section>
 
-                {/* LOCATION */}
+
 
                 <section className="profile_section profile_location_section">
                   <div className="profile_section_heading">
@@ -850,7 +817,7 @@ console.log("Response user:", response.user);
           </div>
         </div>
 
-        {/* FOOTER */}
+
 
         <div className="profile_footer">
           <span>Made with ♥</span>
@@ -860,7 +827,7 @@ console.log("Response user:", response.user);
           </p>
         </div>
 
-        {/* LOGOUT */}
+
 
         {!isEditing && (
           <div className="profile_logout_container">

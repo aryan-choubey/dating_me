@@ -13,9 +13,7 @@ import "./Discover.css";
 const SERVER_URL = "http://localhost:5000";
 
 const Discover = () => {
-  // =========================================
-  // STATE
-  // =========================================
+ 
 
   const [people, setPeople] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(-1);
@@ -30,17 +28,15 @@ const Discover = () => {
   const [swipeLabels, setSwipeLabels] = useState({});
   const [swiping, setSwiping] = useState(false);
 
-  // =========================================
-  // REFS
-  // =========================================
+ 
+  
 
   const cardRefs = useRef([]);
   const processingRef = useRef(false);
   const swipedCardsRef = useRef(new Set());
 
-  // =========================================
-  // FETCH DISCOVER USERS
-  // =========================================
+  
+  
 
   const fetchPeople = useCallback(async () => {
     try {
@@ -82,9 +78,8 @@ const Discover = () => {
     fetchPeople();
   }, [fetchPeople]);
 
-  // =========================================
-  // PHOTO URL
-  // =========================================
+  
+
 
   const getPhotoUrl = (photo) => {
     if (!photo) return "";
@@ -99,9 +94,8 @@ const Discover = () => {
     return `${SERVER_URL}${photo.startsWith("/") ? "" : "/"}${photo}`;
   };
 
-  // =========================================
-  // CALCULATE AGE
-  // =========================================
+
+  
 
   const calculateAge = (dob) => {
     if (!dob) return null;
@@ -130,9 +124,8 @@ const Discover = () => {
     return age >= 0 ? age : null;
   };
 
-  // =========================================
-  // SEND SWIPE TO BACKEND
-  // =========================================
+  
+
 
   const sendSwipe = async (person, action) => {
     if (!person?._id || !action) return;
@@ -156,9 +149,9 @@ const Discover = () => {
     }
   };
 
-  // =========================================
-  // HANDLE SWIPE
-  // =========================================
+ 
+  
+
 const handleSwipe = (direction, person, index) => {
   if (!person?._id) return;
   if (index !== currentIndex) return;
@@ -201,9 +194,9 @@ const handleSwipe = (direction, person, index) => {
     });
   }, 300);
 };
-  // =========================================
-  // SWIPE BUTTONS
-  // =========================================
+  
+
+  
 
   const swipeCard = (direction) => {
     if (currentIndex < 0) return;
@@ -221,9 +214,8 @@ const handleSwipe = (direction, person, index) => {
     currentCard.swipe(direction);
   };
 
-  // =========================================
-  // SWIPE LABEL ANIMATION
-  // =========================================
+
+  
 
   const handleSwipeRequirementFulfilled = (
     direction,
@@ -247,9 +239,8 @@ const handleSwipe = (direction, person, index) => {
     });
   };
 
-  // =========================================
-  // OPEN PROFILE MODAL
-  // =========================================
+  
+  
 
   const openProfile = (person) => {
     if (!person) return;
@@ -265,10 +256,7 @@ const handleSwipe = (direction, person, index) => {
     setSelectedPhotoIndex(0);
   };
 
-  // =========================================
-  // CLOSE MODAL WITH ESCAPE
-  // =========================================
-
+  
   useEffect(() => {
     if (!profileModal) return;
 
@@ -285,9 +273,8 @@ const handleSwipe = (direction, person, index) => {
     };
   }, [profileModal]);
 
-  // =========================================
-  // LOADING
-  // =========================================
+  
+
 
   if (loading) {
     return (
@@ -303,9 +290,8 @@ const handleSwipe = (direction, person, index) => {
     );
   }
 
-  // =========================================
-  // ERROR
-  // =========================================
+  
+
 
   if (error && people.length === 0) {
     return (
@@ -326,10 +312,7 @@ const handleSwipe = (direction, person, index) => {
     );
   }
 
-  // =========================================
-  // EMPTY PROFILES
-  // =========================================
-
+  
   if (people.length === 0) {
     return (
       <div className="discover_page">
@@ -351,15 +334,12 @@ const handleSwipe = (direction, person, index) => {
     );
   }
 
-  // =========================================
-  // MAIN UI
-  // =========================================
+  
 
   return (
     <div className="discover_page">
       <div className="discover_content">
 
-        {/* HEADER */}
 
         <div className="discover_header">
           <div>
@@ -383,7 +363,6 @@ const handleSwipe = (direction, person, index) => {
           </div>
         </div>
 
-        {/* CARD AREA */}
 
         <div className="discover_card_area">
           <div className="card_container">
@@ -436,7 +415,6 @@ const handleSwipe = (direction, person, index) => {
                 >
                   <div className="profile_card">
 
-                    {/* PROFILE IMAGE */}
 
                     {firstPhoto ? (
                       <img
@@ -455,11 +433,9 @@ const handleSwipe = (direction, person, index) => {
                       </div>
                     )}
 
-                    {/* GRADIENT */}
 
                     <div className="profile_card_gradient"></div>
 
-                    {/* SWIPE BADGE */}
 
                     {isActive && swipeDirection && (
                       <div
@@ -472,14 +448,12 @@ const handleSwipe = (direction, person, index) => {
                       </div>
                     )}
 
-                    {/* TOP BADGE */}
 
                     <div className="profile_top_badge">
                       <span className="profile_online_dot"></span>
                       SoulSpark Profile
                     </div>
 
-                    {/* PROFILE INFORMATION */}
 
                     <div className="profile_card_info">
                       <div className="profile_name_row">
@@ -639,9 +613,10 @@ const handleSwipe = (direction, person, index) => {
         </p>
       </div>
 
-      {/* =========================================
-          FULL PROFILE MODAL
-      ========================================= */}
+  
+  
+
+
 
       {profileModal && selectedProfile && (
         <div
