@@ -18,10 +18,13 @@ import bag from '../assets/images/hero.baground.png';
 import heart from '../assets/images/hero1.baground.png';
 
 import Button from '../components/Button';
+import { useNavigate } from "react-router-dom";
 
 
 const Landing = () => {
 
+
+const navigate = useNavigate();
   return (
     <div className="landing">
 
@@ -52,11 +55,11 @@ const Landing = () => {
 
           <div className="button">
 
-            <Button className="login-button">
+            <Button  onClick={() => navigate("/login")} className="login-button">
               Log in
             </Button>
 
-            <Button>
+            <Button onClick={() => navigate("/signup")} > 
               Sign up
             </Button>
 
@@ -144,7 +147,7 @@ const Landing = () => {
 
   {/* Join Button */}
 
-  <Button className="join-button">
+  <Button  onClick={() => navigate("/login")} className="join-button">
     Join now
   </Button>
 

@@ -63,7 +63,7 @@ const Login = () => {
 
             <button
                 className="login-back-button"
-                onClick={() => navigate(-1)}
+                onClick={() => navigate("/")}
             >
                 <span>←</span>
                 Back

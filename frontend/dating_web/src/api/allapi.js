@@ -56,3 +56,15 @@ export const markMessagesAsRead = (senderId) => {
     senderId: senderId,
   });
 };
+
+
+
+export const getMyProfile = async()=>{
+ const response = await api.get("/auth/me");
+  return response.data;
+}
+
+
+export const logoutApi =()=>{
+    return api.post("/auth/logout")
+}
